@@ -1,0 +1,14 @@
+body{
+    width:320px;
+}
+
+table,th,td{
+    border-collapse: collapse;
+    min-width: 60px;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+.add{
+    margin-top: 10px;
+}
