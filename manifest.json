@@ -1,11 +1,12 @@
 {
     "name": "eriri_stock",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "manifest_version": 2,
-    "description": "easy to watch your stock",
+    "description": "一个练手的小程序",
     "permissions": [
         "tabs",
-        "http://*/"
+        "http://*.sinajs.cn/",
+        "https://*.sinajs.cn/"
     ],
     "browser_action": {
         "default_icon": "icon.jpeg",

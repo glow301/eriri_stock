@@ -34,4 +34,29 @@ $(function(){
         var api = "http://finance.sina.com.cn/realstock/company/"+code+"/nc.shtml";
         chrome.tabs.create({url:api})
     });
+
+    //输入框搜索建议
+    $("#stock_code").keyup(function(){
+        var stockCode = $(this).val();
+        var suggest = stock.getSuggest(stockCode);
+        
+        var html = "";
+        for(var i = 0; i < suggest.length; i++){
+            var code = suggest[i]['code'];
+            var name = suggest[i]['name'];
+            if(!code || !name){
+                continue;
+            }
+            html += "<li data-code='"+code+"'><a href='#'>"+code+"["+name+"]</a></li>"
+        }
+        $("#suggest").html(html);
+        $("#suggest").show();
+    });
+
+    //点击搜索建议事件
+    $(document).on( "click", "#suggest li", function() {
+        var code = $(this).attr("data-code");
+        $("#stock_code").val(code);
+        $("#suggest").hide();
+    });
 })

@@ -21,7 +21,7 @@ ul li{
     list-style: none;
 }
 
-td a{
+a{
     text-decoration: none;
     color:inherit;
 }

@@ -11,6 +11,8 @@ class Stock{
         this.key = "eriri_stock";
         //数据获取api
         this.api = "http://hq.sinajs.cn/";
+        //搜索建议api
+        this.suggestApi = "http://suggest.sinajs.cn/suggest/";
     }
 
     /**
@@ -29,6 +31,35 @@ class Stock{
             return '';
         }
         return localStorage[this.key].replace(/(^,|,$)/g,"");
+    }
+
+    /**
+     * 输入时搜索建议
+     */
+    getSuggest(code){
+        var query = {
+            type:"",
+            key:code,
+            name:"suggestdata_" + this.getTimestamp()
+        }
+        var api = this.suggestApi + this.buildQuery(query);
+
+        try{
+            var response = this.requestSync(api);
+            var data = response.match(/=\"(.*?)\"/)[1].split(";");
+            var list = [];
+            for(var i = 0; i < data.length; i++){
+                var item = data[i].split(",");
+     
+                list.push({
+                    code:item[2],
+                    name:item[4]
+                })
+            }
+        }catch(e){
+            return [];
+        }
+        return list;
     }
 
     /**
