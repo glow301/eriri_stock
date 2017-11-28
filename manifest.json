@@ -1,11 +1,11 @@
 {
     "name": "eriri_stock",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "manifest_version": 2,
     "description": "easy to watch your stock",
     "permissions": [
-        "http://hq.sinajs.cn/",
-        "https://hq.sinajs.cn/"
+        "tabs",
+        "http://*/"
     ],
     "browser_action": {
         "default_icon": "icon.jpeg",

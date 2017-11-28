@@ -72,23 +72,11 @@ class Stock{
     }
 
     /**
-     * 获取数据
-     * @return string
+     * 通过接口同步获取数据
+     * @param api   string     请求接口地址
      */
-    fetch(){
+    requestSync(api){
         var response = "";
-        var code = this.getCodeFromLocalStorge();
-        
-        console.log(code);
-        //自选股代码为空，返回空
-        if("" == code){
-            return "";
-        }
-
-        var timestamp = this.getTimestamp();
-        var api = this.api + "rn=" + timestamp + "&list=" + code;
-        console.log(api);
-
         var xhr = new XMLHttpRequest();
         xhr.open("GET", api, false);
         xhr.onreadystatechange = function() {
@@ -99,6 +87,39 @@ class Stock{
         }
         xhr.send();
         return response;
+    }
+
+    /**
+     * 构建查询querystring
+     * @param   object  传入参数对象
+     * @return  string  构建好的querystring
+     */
+    buildQuery(obj){
+        var query = [];
+        for (var key in obj) {
+            query.push(key + "=" + obj[key])
+        }
+        return query.join("&");
+    }
+
+    /**
+     * 获取数据
+     * @return string
+     */
+    fetch(){
+        var code = this.getCodeFromLocalStorge();
+        
+        //自选股代码为空，返回空
+        if("" == code){
+            return "";
+        }
+
+        var query = {
+            rn:this.getTimestamp(),
+            list:code
+        }
+        var api = this.api + this.buildQuery(query);
+        return this.requestSync(api);
     }
 
     /**
@@ -151,7 +172,7 @@ class Stock{
 
             //定义删除按钮
             var del = "<td><a data-action='delete' data-code='"+key+"' href='#'>删除</a></td>";
-            var row = "<td>"+key+"</td><td>"+name+"</td><td>"+now+"</td><td>"+change+"</td><td>"+rate+"%</td>" + del;
+            var row = "<td><a href='#' data-action='open'>"+key+"</a></td><td>"+name+"</td><td>"+now+"</td><td>"+change+"</td><td>"+rate+"%</td>" + del;
 
             var style = 'color:red;';
             if(change < 0 ) {

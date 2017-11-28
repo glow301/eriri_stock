@@ -14,9 +14,14 @@ table,th,td{
 }
 
 #suggest{
-    display: none;
+    display: block;
 }
 
 ul li{
     list-style: none;
+}
+
+td a{
+    text-decoration: none;
+    color:inherit;
 }
