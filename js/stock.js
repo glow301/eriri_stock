@@ -69,8 +69,6 @@ class Stock{
         localStorage[this.key] = stockCode;
         console.log("修改后");
         console.log(stockCode);
-        //修改完渲染数据
-        this.render();
     }
 
     /**
@@ -153,7 +151,7 @@ class Stock{
 
             //定义删除按钮
             var del = "<td><a data-action='delete' data-code='"+key+"' href='#'>删除</a></td>";
-            var row = "<td>"+name+"</td><td>"+now+"</td><td>"+change+"</td><td>"+rate+"%</td>" + del;
+            var row = "<td>"+key+"</td><td>"+name+"</td><td>"+now+"</td><td>"+change+"</td><td>"+rate+"%</td>" + del;
 
             var style = 'color:red;';
             if(change < 0 ) {

@@ -1,5 +1,5 @@
 body{
-    width:320px;
+    width:360px;
 }
 
 table,th,td{
@@ -11,4 +11,12 @@ table,th,td{
 
 .add{
     margin-top: 10px;
+}
+
+#suggest{
+    display: none;
+}
+
+ul li{
+    list-style: none;
 }

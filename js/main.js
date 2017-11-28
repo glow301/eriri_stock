@@ -1,6 +1,6 @@
 $(function(){ 
     var stock = new Stock();
-    //渲染数据
+    //页面初始化先渲染一次数据
     stock.render();
 
     //处理点击添加代码事件
@@ -18,5 +18,9 @@ $(function(){
         console.log(code);
         //移除对应localStorge中的代码
         stock.removeStock(code);
+        //修改完渲染数据
+        stock.render();
     });
+
+    //用户输入时，提示建议结果
 })
