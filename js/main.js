@@ -23,8 +23,8 @@ $(function(){
     });
 
     //点击股票代码，添加跳转
-    $(document).on( "click", "a[data-action=open]", function() {
-        var code = $(this).text();
+    $(document).on( "click", "td[data-action=open]", function() {
+        var code = $(this).parent().attr("data-code");
         if(code.match(/^00.*?/)){
             code = "sz"+code;
         }

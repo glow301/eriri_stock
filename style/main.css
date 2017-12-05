@@ -1,4 +1,8 @@
 body{
+    width:380px;
+}
+
+table{
     width:360px;
 }
 
@@ -7,6 +11,10 @@ table,th,td{
     min-width: 60px;
     border-bottom: 1px solid;
     text-align: center;
+}
+
+td[data-action=open]{
+    cursor:pointer;
 }
 
 #add{
@@ -24,6 +32,11 @@ table,th,td{
 
 #suggest li:hover{
 	background: #ccc;
+}
+
+#notice{
+    margin-left:20px;
+    color: #CCC;
 }
 
 ul{

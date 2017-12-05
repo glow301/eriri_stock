@@ -203,14 +203,23 @@ class Stock{
 
             //定义删除按钮
             var del = "<td><a data-action='delete' data-code='"+key+"' href='#'>删除</a></td>";
-            var row = "<td><a href='#' data-action='open'>"+key+"</a></td><td>"+name+"</td><td>"+now+"</td><td>"+change+"</td><td>"+rate+"%</td>" + del;
+            var row = "<td data-action='open'>"+key+"</td><td data-action='open'>"+name+"</td><td>"+now+"</td><td>"+change+"</td><td>"+rate+"%</td>" + del;
 
             var style = 'color:red;';
             if(change < 0 ) {
                 style = 'color:green;';
             }
-            html += "<tr style="+style+">"+row+"</tr>";
+            html += "<tr data-code='"+key+"' style="+style+">"+row+"</tr>";
         }
         $("#content").html(html);
+        this.addNotice();
     }
+
+     /**
+      * 增加提示信息
+      */
+      addNotice() {
+          var notice = "点击代码或名称查看详细信息";
+          $("#notice").text(notice);
+      }
 }
